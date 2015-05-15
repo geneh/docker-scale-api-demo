@@ -1,0 +1,35 @@
+# Docker version 1.5.X
+#
+# To build: docker build --force-rm=true -t ghazan/web-api:0.0.1 .
+# To run:   docker run -d -p 80:3000  ghazan/web-api:0.0.1
+# To tag:   docker <container_id> -t ghazan/web-api:latest
+#
+# Poke at the environment:
+#   docker run -t -i -p 80:3000  ghazan/web-api:0.0.1 /bin/bash
+
+FROM    ubuntu:15.04
+MAINTAINER ghazan
+
+# Install dependencies
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y git wget curl software-properties-common python-pip libavahi-compat-libdnssd-dev
+
+# Install NVM and iojs
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash && . ~/.bashrc  && nvm install 2.0.1 && nvm alias default 2.0.1
+
+# Clean up unnecessary packages.  The goal is to reduce size.
+RUN apt-get clean && apt-get autoclean && apt-get -y autoremove && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install supervisor and aggregate stdout to docker log
+RUN easy_install supervisor==3.1.3; mkdir -p /var/log/supervisord;pip install supervisor-stdout
+
+# Add the project
+WORKDIR /root
+RUN mkdir -p web-api
+ADD . web-api
+
+# Expose port needed for Node.js or iojs
+EXPOSE 3000
+
+#Add in supervisor configs.
+ADD supervisord.conf /usr/local/etc/supervisord.conf
+CMD ["/usr/local/bin/supervisord", "-c", "/usr/local/etc/supervisord.conf"]

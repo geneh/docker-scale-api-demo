@@ -1,0 +1,15 @@
+{
+  "name": "web-api",
+  "version": "1.0.0",
+  "description": "Web API that incrementally persists its hostname into Redis DB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gene Hazan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.3",
+    "redis": "^0.12.1"
+  }
+}
