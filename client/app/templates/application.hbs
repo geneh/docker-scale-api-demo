@@ -1,3 +1,33 @@
-<h2 id="title">Welcome to Ember.js</h2>
-
+<div class="row">
+    <div class="small-12 columns text-center">
+        <h2 class="pageHeader">Docker Scale Demo</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 medium-6 columns">
+        <table>
+            <thead>
+            <tr>
+                <th class="text-center">Container</th>
+                <th class="text-center">Number of Hits</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each model as |item|}}
+                <tr>
+                    <td class="text-center">{{item.instance}}</td>
+                    <td class="text-center">{{item.hits}}</td>
+                </tr>
+            {{else}}
+                <tr><td>No data.</td></tr>
+            {{/each}}
+            </tbody>
+        </table>
+        <button class="radius small">Reset</button>
+    </div>
+    <div class="small-12 medium-6 columns">
+      {{c3-chart data=chartData config=chartConfig}}
+    </div>
+</div>
 {{outlet}}
+{{view "foundation"}}

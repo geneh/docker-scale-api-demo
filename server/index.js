@@ -22,7 +22,8 @@ app.get('/api/all', function(req, res) {
         reply.forEach(function(key, index) {
             client.get(key, function(err, value) {
                 var entry = {};
-                entry[key] = value;
+                entry.instance = key;
+                entry.hits = value;
                 payload.push(entry);
                 if (index === reply.length-1) {
                     res.json(payload);
