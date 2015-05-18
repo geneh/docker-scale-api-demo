@@ -8,7 +8,7 @@
         <table>
             <thead>
             <tr>
-                <th class="text-center">Container</th>
+                <th class="text-center">Web API Container</th>
                 <th class="text-center">Number of Hits</th>
             </tr>
             </thead>
@@ -23,10 +23,14 @@
             {{/each}}
             </tbody>
         </table>
-        <button class="radius small">Reset</button>
+        <button {{action 'reset'}} class="radius small">Reset</button>
     </div>
     <div class="small-12 medium-6 columns">
       {{c3-chart data=chartData config=chartConfig}}
+        <div class="panel radius">
+          <div><i>Total instances:</i> {{model.length}}</div>
+          <div><i>Updated at:</i> {{lastUpdated}}</div>
+        </div>
     </div>
 </div>
 {{outlet}}

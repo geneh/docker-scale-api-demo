@@ -3,9 +3,8 @@ import ENV from'../config/environment';
 
 export default Ember.Route.extend({
   model: function() {
-    var url = ENV.hostAndNamespace + '/all';
     return Ember.$.ajax({
-      url: url,
+      url: ENV.hostAndNamespace + '/all',
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
@@ -13,5 +12,11 @@ export default Ember.Route.extend({
     }).done(function(data){
       return data;
     });
+  },
+  afterModel: function(){
+    var self = this;
+    Ember.run.later(function() {
+      self.refresh();
+    }, 3000);
   }
 });
