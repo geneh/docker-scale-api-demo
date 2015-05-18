@@ -1,7 +1,7 @@
 {
-  "name": "web-api",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Web API that incrementally persists its hostname into Redis DB.",
+  "description": "Server to serve up an SPA and expose web APIs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.12.4",
-    "redis": "^0.12.1"
+    "redis": "^0.12.1",
+    "serve-favicon": "^2.2.1"
   }
 }
