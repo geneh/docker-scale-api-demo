@@ -11,7 +11,7 @@ FROM    ubuntu:15.04
 MAINTAINER ghazan
 
 # Install dependencies
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y git wget curl software-properties-common python-pip libavahi-compat-libdnssd-dev
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y curl python-pip
 
 # Install NVM and iojs
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash && . ~/.bashrc  && nvm install 2.0.1 && nvm alias default 2.0.1
