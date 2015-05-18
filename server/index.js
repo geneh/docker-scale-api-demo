@@ -6,7 +6,7 @@ const express = require('express'),
     redis = require('redis');
 
 const app = express(),
-    host = process.argv[2] || '127.0.0.1', //Redis host
+    host = process.argv[2] || '0.0.0.0', //Redis host
     client = redis.createClient(6379, host);
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
