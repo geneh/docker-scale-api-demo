@@ -1,7 +1,7 @@
 # Docker version 1.5.X
 #
 # To build: docker build --force-rm=true -t ghazan/server:0.0.1 .
-# To run:   docker run --name server -d -p 80:3000  ghazan/server:0.0.1
+# To run:   docker run --name server -d -p 80:3000 -link redis:db ghazan/server:0.0.1
 # To tag:   docker <container_id> -t ghazan/server:latest
 #
 # Poke at the environment:
