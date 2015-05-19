@@ -1,11 +1,11 @@
 # Docker version 1.5.X
 #
-# To build: docker build --force-rm=true -t ghazan/web-api:0.0.1 .
-# To run:   docker run -d -p 80:3000  ghazan/web-api:0.0.1
-# To tag:   docker <container_id> -t ghazan/web-api:latest
+# To build: docker build --force-rm=true -t ghazan/server:0.0.1 .
+# To run:   docker run -d -p 80:3000  ghazan/server:0.0.1
+# To tag:   docker <container_id> -t ghazan/server:latest
 #
 # Poke at the environment:
-#   docker run -t -i -p 80:3000  ghazan/web-api:0.0.1 /bin/bash
+#   docker run -t -i -p 80:3000  ghazan/server:0.0.1 /bin/bash
 
 FROM    ubuntu:15.04
 MAINTAINER ghazan
@@ -24,8 +24,9 @@ RUN easy_install supervisor==3.1.3; mkdir -p /var/log/supervisord;pip install su
 
 # Add the project
 WORKDIR /root
-RUN mkdir -p web-api
-ADD . web-api
+RUN mkdir -p server client/dist
+ADD . server
+ADD dist client/dist
 
 # Expose port needed for Node.js or iojs
 EXPOSE 3000
