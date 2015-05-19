@@ -10,3 +10,6 @@ Demo project to scale Node web API, capture statistics in Redis DB, and display 
 ``` cd client; npm install; bower install; ember build --environment=production; cp -r dist ../server/```
 
 ``` cd ../server; npm install ```
+
+## Docker Containers
+Follow instructions provided in every Dockerfile.
