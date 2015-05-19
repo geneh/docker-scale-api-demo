@@ -10,7 +10,7 @@ const app = express(),
     client = redis.createClient(6379, host);
 
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(favicon(__dirname + 'dist/favicon.ico'));
+app.use(favicon(__dirname + '/dist/favicon.ico'));
 
 // curl -H "Content-Type:application/json" http://localhost:3000/api/all
 app.get('/api/all', function(req, res) {
