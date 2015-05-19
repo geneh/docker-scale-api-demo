@@ -1,7 +1,7 @@
 # Docker version 1.5.X
 #
 # To build: docker build --force-rm=true -t ghazan/web-api:0.0.1 .
-# To run:   docker run -d -p 80:3000  ghazan/web-api:0.0.1
+# To run:   docker run -d -p 80:3000 -e "REDIS_DB_ADDR=dockerscaledemo.cloudapp.net" ghazan/web-api:0.0.1
 # To tag:   docker <container_id> -t ghazan/web-api:latest
 #
 # Poke at the environment:

@@ -12,4 +12,5 @@ Demo project to scale Node web API, capture statistics in Redis DB, and display 
 ``` cd ../server; npm install ```
 
 ## Docker Containers
+Start Redis container first.
 Follow instructions provided in every Dockerfile.
