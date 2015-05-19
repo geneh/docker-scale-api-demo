@@ -1,4 +1,4 @@
-#!/bin/env node 127.0.0.1
+#!/bin/env node
 
 const express = require('express'),
     hostname = require('os').hostname(),
