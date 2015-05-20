@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
     for (var i=0; i<data.length; i++) {
       chartData.instances.push(data[i].instance);
       chartData.numOfHits.push(data[i].hits);
-      chartData.totalHits += data[i].hits;
+      chartData.totalHits += +data[i].hits;
     }
     return chartData;
   }.property('model'),
