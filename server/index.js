@@ -26,6 +26,9 @@ app.get('/api/all', function(req, res) {
                 entry.hits = value;
                 payload.push(entry);
                 if (index === reply.length-1) {
+                    payload = payload.sort(function(a, b) { //Sort instances
+                        return a.instance.localeCompare(b.instance);
+                    });
                     res.json(payload);
                 }
             });
