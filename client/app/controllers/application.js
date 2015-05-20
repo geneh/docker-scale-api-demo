@@ -2,12 +2,20 @@ import Ember from 'ember';
 import ENV from'../config/environment';
 
 export default Ember.Controller.extend({
+  totalHits: Ember.computed.oneWay('prepareChartData.totalHits'),
+  modelWithIndices: function() {
+    return this.get('model').map(function(item, index) {
+      item.index = index+1;
+      return item;
+    });
+  }.property('model'),
   prepareChartData: function() {
-    var chartData = {'instances':[], 'numOfHits': []};
+    var chartData = {'instances':[], 'numOfHits': [], totalHits: 0};
     var data = this.get('model');
     for (var i=0; i<data.length; i++) {
       chartData.instances.push(data[i].instance);
       chartData.numOfHits.push(data[i].hits);
+      chartData.totalHits += data[i].hits;
     }
     return chartData;
   }.property('model'),

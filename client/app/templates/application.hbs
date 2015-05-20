@@ -8,27 +8,32 @@
         <table>
             <thead>
             <tr>
+                <th>#</th>
                 <th class="text-center">Web API Hostname / Container ID</th>
                 <th class="text-center">Number of Hits</th>
             </tr>
             </thead>
             <tbody>
-            {{#each model as |item|}}
+            {{#each modelWithIndices as |item|}}
                 <tr>
+                    <td>{{item.index}}</td>
                     <td class="text-center">{{item.instance}}</td>
                     <td class="text-center">{{item.hits}}</td>
                 </tr>
             {{else}}
                 <tr><td>No data.</td></tr>
             {{/each}}
+            <tr>
+                <td class="text-center" colspan="2"><b>Total:</b></td>
+                <td class="text-center">{{totalHits}}</td>
+            </tr>
             </tbody>
         </table>
     </div>
     <div class="small-12 medium-6 columns">
       {{c3-chart data=chartData config=chartConfig}}
         <div class="panel radius">
-          <div>Total instances: <span class="label">{{model.length}}</span></div>
-          <div>Updated at: <span class="label">{{lastUpdated}}</span></div>
+          <div>Updated at: <span class="label radius">{{lastUpdated}}</span></div>
         </div>
         <button {{action 'reset'}} class="radius secondary expand">Reset Stats</button>
     </div>
